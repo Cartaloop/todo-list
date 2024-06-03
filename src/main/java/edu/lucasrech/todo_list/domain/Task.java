@@ -32,4 +32,13 @@ public class Task {
     @Column(name = "conclusion_date")
     private LocalDateTime finishedAt;
 
+    public Task(TaskDTO taskDTO) {
+        this.title = taskDTO.title();
+        this.description = taskDTO.description();
+        this.priority = taskDTO.priority();
+        this.completed = false;
+        this.createdAt = LocalDateTime.now();
+        this.finishedAt = taskDTO.finishedDate();
+    }
+
 }
