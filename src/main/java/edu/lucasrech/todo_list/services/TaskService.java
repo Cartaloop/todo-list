@@ -19,23 +19,25 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
-    public Task newTask(Task task) {
-        return taskRepository.save(task);
+    public List<Task> newTask(Task task) {
+        taskRepository.save(task);
+        return getAllTasks();
     }
 
-    public Task updateTask(Task task) throws Exception {
+    public List<Task> updateTask(Task task) throws Exception {
         if(!taskRepository.existsById(task.getId())) {
             throw new Exception("Tarefa não encontrada");
         }
-        return taskRepository.save(task);
+        taskRepository.save(task);
+        return getAllTasks();
     }
 
-    public List<Task> deleteTask(Task task) throws Exception {
-        if(!taskRepository.existsById(task.getId())) {
+    public List<Task> deleteTask(Long taskId) throws Exception {
+        if(!taskRepository.existsById(taskId)) {
             throw new Exception("Tarefa a ser excluída não foi encontrada");
         }
-        taskRepository.deleteById(task.getId());
-        return taskRepository.findAll();
+        taskRepository.deleteById(taskId);
+        return getAllTasks();
     }
 
 
