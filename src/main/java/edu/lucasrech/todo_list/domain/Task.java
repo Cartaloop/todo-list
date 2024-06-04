@@ -2,10 +2,7 @@ package edu.lucasrech.todo_list.domain;
 
 import edu.lucasrech.todo_list.domain.enums.Priority;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -13,13 +10,14 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Getter
+@Setter
 @Entity
 @Table(name = "tasks")
 public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     @Column(nullable = false)
     private String title;
@@ -39,6 +37,15 @@ public class Task {
         this.completed = false;
         this.createdAt = LocalDateTime.now();
         this.finishedAt = taskDTO.finishedDate();
+    }
+
+    public Task(TaskUpdateDTO updateDTO) {
+        this.title = updateDTO.title();
+        this.description = updateDTO.description();
+        this.priority = updateDTO.priority();
+        this.completed = updateDTO.isCompleted();
+        this.createdAt = getCreatedAt();
+        this.finishedAt = updateDTO.finishedDate();
     }
 
 }
