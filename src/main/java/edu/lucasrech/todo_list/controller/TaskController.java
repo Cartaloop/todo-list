@@ -1,6 +1,8 @@
 package edu.lucasrech.todo_list.controller;
 
-import edu.lucasrech.todo_list.domain.Task;
+import edu.lucasrech.todo_list.domain.TaskResponseDTO;
+import edu.lucasrech.todo_list.domain.TaskDTO;
+import edu.lucasrech.todo_list.domain.TaskUpdateDTO;
 import edu.lucasrech.todo_list.services.TaskService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,22 +19,22 @@ public class TaskController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Task>> getAllTasks() {
+    public ResponseEntity<List<TaskResponseDTO>> getAllTasks() {
         return ResponseEntity.ok(taskService.getAllTasks());
     }
 
     @PostMapping
-    public ResponseEntity<List<Task>> createTask(@RequestBody Task task) {
+    public ResponseEntity<List<TaskResponseDTO>> createTask(@RequestBody TaskDTO task) {
         return ResponseEntity.ok(taskService.newTask(task));
     }
 
     @DeleteMapping
-    public ResponseEntity<List<Task>> deleteTask(@RequestBody Long id) throws Exception {
+    public ResponseEntity<List<TaskResponseDTO>> deleteTask(@RequestBody Long id) throws Exception {
         return ResponseEntity.ok(taskService.deleteTask(id));
     }
 
     @PutMapping
-    public ResponseEntity<List<Task>> updateTask(@RequestBody Task task) throws Exception {
-        return ResponseEntity.ok(taskService.updateTask(task));
+    public ResponseEntity<List<TaskResponseDTO>> updateTask(@RequestBody TaskUpdateDTO task, Long id) throws Exception {
+        return ResponseEntity.ok(taskService.updateTask(task, id));
     }
 }
