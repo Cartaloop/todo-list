@@ -11,6 +11,7 @@ import java.util.List;
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
 
-    @Query("SELECT new edu.lucasrech.todo_list.domain.TaskResponseDTO(t.id ,t.title, t.description, t.completed, t.priority, t.createdAt, t.finishedAt) FROM Task t")
+    @Query("SELECT new edu.lucasrech.todo_list.domain.TaskResponseDTO(" +
+            "t.id,t.title, t.description, t.completed, t.priority, t.createdAt, t.finishedAt) FROM Task t")
     List<TaskResponseDTO> findAllDTO();
 }

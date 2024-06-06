@@ -4,7 +4,9 @@ import edu.lucasrech.todo_list.domain.TaskResponseDTO;
 import edu.lucasrech.todo_list.domain.Task;
 import edu.lucasrech.todo_list.domain.TaskDTO;
 import edu.lucasrech.todo_list.domain.TaskUpdateDTO;
+import edu.lucasrech.todo_list.exceptions.ControllerExceptionHandler;
 import edu.lucasrech.todo_list.repository.TaskRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,11 +21,14 @@ public class TaskService {
         this.taskRepository = taskRepository;
     }
 
-    public List<TaskResponseDTO> getAllTasks() {
+    public List<TaskResponseDTO> getAllTasks() throws Exception {
+        if (taskRepository.findAll().isEmpty()) {
+            throw new Exception("Não há tarefas");
+        }
         return taskRepository.findAllDTO();
     }
 
-    public List<TaskResponseDTO> newTask(TaskDTO task) {
+    public List<TaskResponseDTO> newTask(TaskDTO task) throws Exception {
         var newTask = new Task(task);
         taskRepository.save(newTask);
         return getAllTasks();
@@ -33,7 +38,7 @@ public class TaskService {
         Optional<Task> taskOptional = taskRepository.findById(id);
 
         if(taskOptional.isEmpty()) {
-            throw new Exception("Tarefa não encontrada");
+            throw new Exception("Tarefa não localizada");
         }
 
         Task existingTask = taskOptional.get();
@@ -49,7 +54,7 @@ public class TaskService {
 
     public List<TaskResponseDTO> deleteTask(Long taskId) throws Exception {
         if(!taskRepository.existsById(taskId)) {
-            throw new Exception("Tarefa a ser excluída não foi encontrada");
+            throw new EntityNotFoundException("Nenhuma entidade encontrada");
         }
         taskRepository.deleteById(taskId);
         return getAllTasks();

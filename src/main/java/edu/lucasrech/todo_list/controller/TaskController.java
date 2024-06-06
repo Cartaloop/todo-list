@@ -3,6 +3,7 @@ package edu.lucasrech.todo_list.controller;
 import edu.lucasrech.todo_list.domain.TaskResponseDTO;
 import edu.lucasrech.todo_list.domain.TaskDTO;
 import edu.lucasrech.todo_list.domain.TaskUpdateDTO;
+import edu.lucasrech.todo_list.exceptions.ControllerExceptionHandler;
 import edu.lucasrech.todo_list.services.TaskService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,12 +20,12 @@ public class TaskController {
     }
 
     @GetMapping
-    public ResponseEntity<List<TaskResponseDTO>> getAllTasks() {
-        return ResponseEntity.ok(taskService.getAllTasks());
+    public ResponseEntity<List<TaskResponseDTO>> getAllTasks() throws Exception {
+            return ResponseEntity.ok(taskService.getAllTasks());
     }
 
     @PostMapping
-    public ResponseEntity<List<TaskResponseDTO>> createTask(@RequestBody TaskDTO task) {
+    public ResponseEntity<List<TaskResponseDTO>> createTask(@RequestBody TaskDTO task) throws Exception {
         return ResponseEntity.ok(taskService.newTask(task));
     }
 
