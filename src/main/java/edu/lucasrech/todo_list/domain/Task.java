@@ -36,7 +36,7 @@ public class Task {
         this.priority = taskDTO.priority();
         this.completed = false;
         this.createdAt = LocalDateTime.now();
-        this.finishedAt = taskDTO.finishedDate();
+        this.finishedAt = taskDTO.conclusionDate();
     }
 
     public Task(TaskUpdateDTO updateDTO) {
@@ -45,7 +45,7 @@ public class Task {
         this.priority = updateDTO.priority();
         this.completed = updateDTO.isCompleted();
         this.createdAt = getCreatedAt();
-        this.finishedAt = updateDTO.finishedDate();
+        this.finishedAt = updateDTO.conclusionDate();
     }
 
 }
