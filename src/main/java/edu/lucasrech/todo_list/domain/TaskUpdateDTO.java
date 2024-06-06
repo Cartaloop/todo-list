@@ -9,6 +9,6 @@ public record TaskUpdateDTO(
         String description,
         Priority priority,
         Boolean isCompleted,
-        LocalDateTime finishedDate
+        LocalDateTime conclusionDate
 ) {
 }

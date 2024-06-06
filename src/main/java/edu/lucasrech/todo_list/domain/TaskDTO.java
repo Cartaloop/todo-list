@@ -8,6 +8,6 @@ public record TaskDTO(
 String title,
 String description,
 Priority priority,
-LocalDateTime finishedDate
+LocalDateTime conclusionDate
 ) {
 }
