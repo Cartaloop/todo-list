@@ -4,7 +4,6 @@ import edu.lucasrech.todo_list.domain.TaskResponseDTO;
 import edu.lucasrech.todo_list.domain.Task;
 import edu.lucasrech.todo_list.domain.TaskDTO;
 import edu.lucasrech.todo_list.domain.TaskUpdateDTO;
-import edu.lucasrech.todo_list.exceptions.ControllerExceptionHandler;
 import edu.lucasrech.todo_list.repository.TaskRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;

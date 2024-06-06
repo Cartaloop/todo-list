@@ -3,7 +3,6 @@ package edu.lucasrech.todo_list.controller;
 import edu.lucasrech.todo_list.domain.TaskResponseDTO;
 import edu.lucasrech.todo_list.domain.TaskDTO;
 import edu.lucasrech.todo_list.domain.TaskUpdateDTO;
-import edu.lucasrech.todo_list.exceptions.ControllerExceptionHandler;
 import edu.lucasrech.todo_list.services.TaskService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
