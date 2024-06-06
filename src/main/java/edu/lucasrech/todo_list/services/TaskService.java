@@ -46,7 +46,7 @@ public class TaskService {
         existingTask.setDescription(task.description());
         existingTask.setPriority(task.priority());
         existingTask.setCompleted(task.isCompleted());
-        existingTask.setFinishedAt(task.finishedDate());
+        existingTask.setFinishedAt(task.conclusionDate());
 
         taskRepository.save(existingTask);
         return getAllTasks();
