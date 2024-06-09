@@ -10,7 +10,7 @@ Essa aplicação foi desenvolvida utilizando as tecnologias:
 
 
 ## Documentação de requisições
-O projeto está todo documentado utilizando o Swagger. Para entender como funcionam as requisições JSON dessa aplicação, basta acessar:
+O projeto está todo documentado utilizando o Swagger. Para entender como funcionam as requisições JSON dessa aplicação, basta clonar localmente esse projeto, executá-lo e acessar:
 <p style="color: aqua">localhost:8080/swagger-ui.html</p>
 <br>
 <br>
